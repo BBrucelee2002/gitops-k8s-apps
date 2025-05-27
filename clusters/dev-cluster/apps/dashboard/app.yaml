@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://kubernetes.github.io/dashboard/
+    repoURL: 'https://kubernetes.github.io/dashboard/'
     chart: kubernetes-dashboard
     targetRevision: 7.12.0
     helm:
@@ -19,5 +19,3 @@ spec:
     automated:
       prune: true
       selfHeal: true
-    syncOptions:
-      - CreateNamespace=true

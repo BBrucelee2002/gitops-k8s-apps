@@ -1,6 +1,9 @@
-fullnameOverride: kubernetes-dashboard
-protocolHttp: true
-service:
-  externalPort: 80
-ingress:
-  enabled: false
+enableSkipLogin: true
+enableInsecureLogin: true
+resources:
+  limits:
+    cpu: 100m
+    memory: 200Mi
+  requests:
+    cpu: 50m
+    memory: 100Mi

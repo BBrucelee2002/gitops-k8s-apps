@@ -1,12 +1,12 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: dev-cluster-root
+  name: dev-cluster-apps
   namespace: argocd
 spec:
   project: default
   source:
-    repoURL: https://github.com/your-username/argocd-k8s-apps.git
+    repoURL: 'https://github.com/BBrucelee2002/gitops-k8s-apps.git'  # Replace with your repo
     targetRevision: HEAD
     path: clusters/dev-cluster/apps
   destination:
@@ -16,3 +16,6 @@ spec:
     automated:
       prune: true
       selfHeal: true
+  directory:
+    recurse: true
+    

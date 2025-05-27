@@ -1,4 +1,11 @@
 installCRDs: true
-replicaCount: 1
-prometheus:
-  enabled: true
+replicaCount: 2
+podDisruptionBudget:
+  maxUnavailable: 1
+resources:
+  limits:
+    cpu: 200m
+    memory: 512Mi
+  requests:
+    cpu: 100m
+    memory: 256Mi
