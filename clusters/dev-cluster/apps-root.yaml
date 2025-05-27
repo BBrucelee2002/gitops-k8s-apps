@@ -1,20 +1,27 @@
 apiVersion: argoproj.io/v1alpha1
-kind: Application
+kind: ApplicationSet
 metadata:
-  name: dev-cluster-apps
+  name: dev-cluster-appset
   namespace: argocd
 spec:
-  project: default
-  source:
-    repoURL: 'https://github.com/BBrucelee2002/gitops-k8s-apps.git'  # Replace with your repo
-    targetRevision: HEAD
-    path: clusters/dev-cluster/apps
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: argocd
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
- 
-    
+  generators:
+    - directory:
+        path: clusters/dev-cluster/apps
+        repoURL: 'https://github.com/BBrucelee2002/gitops-k8s-apps.git'
+        targetRevision: HEAD
+  template:
+    metadata:
+      name: '{{path.basename}}'
+    spec:
+      project: default
+      source:
+        repoURL: 'https://github.com/BBrucelee2002/gitops-k8s-apps.git'
+        targetRevision: HEAD
+        path: '{{path}}'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: argocd
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
