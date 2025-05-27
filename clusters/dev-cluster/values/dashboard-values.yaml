@@ -1,1 +1,14 @@
-fullnameOverride: kubernetes-dashboard
+ingress:
+  enabled: false
+rbac:
+  create: true
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    cpu: 100m
+    memory: 128Mi
+service:
+  externalPort: 80
+  internalPort: 9090

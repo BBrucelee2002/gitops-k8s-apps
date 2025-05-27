@@ -1,2 +1,9 @@
+prometheus:
+  prometheusSpec:
+    serviceMonitorSelectorNilUsesHelmValues: false
 grafana:
-  adminPassword: prom-operator
+  enabled: true
+  adminPassword: "prom-operator"
+  persistence:
+    enabled: true
+    size: 2Gi
