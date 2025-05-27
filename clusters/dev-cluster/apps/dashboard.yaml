@@ -11,7 +11,7 @@ spec:
     targetRevision: 7.12.0
     helm:
       valueFiles:
-        - ../values/dashboard-values.yaml
+        - /clusters/dev-cluster/values/dashboard-values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: kubernetes-dashboard
