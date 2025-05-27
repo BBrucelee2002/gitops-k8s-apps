@@ -1,0 +1,6 @@
+fullnameOverride: kubernetes-dashboard
+protocolHttp: true
+service:
+  externalPort: 80
+ingress:
+  enabled: false

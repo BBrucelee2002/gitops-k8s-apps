@@ -1,0 +1,9 @@
+grafana:
+  enabled: true
+  adminPassword: prom-operator
+prometheus:
+  prometheusSpec:
+    serviceMonitorSelectorNilUsesHelmValues: false
+alertmanager:
+  alertmanagerSpec:
+    replicas: 1

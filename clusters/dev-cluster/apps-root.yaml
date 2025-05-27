@@ -1,20 +1,18 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: dev-cluster-apps-root
+  name: dev-cluster-root
   namespace: argocd
 spec:
+  project: default
+  source:
+    repoURL: https://github.com/your-username/argocd-k8s-apps.git
+    targetRevision: HEAD
+    path: clusters/dev-cluster/apps
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
-  project: default
-  source:
-    repoURL: https://github.com/BBrucelee2002/gitops-k8s-apps.git
-    targetRevision: HEAD
-    path: clusters/dev-cluster/apps
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
