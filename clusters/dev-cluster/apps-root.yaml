@@ -3,10 +3,12 @@ kind: Application
 metadata:
   name: dev-cluster-apps
   namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io   # <-- Enables deletion of cluster resources
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/BBrucelee2002/gitops-k8s-apps.git'  # Replace with your repo
+    repoURL: 'https://github.com/BBrucelee2002/gitops-k8s-apps.git'
     targetRevision: HEAD
     path: clusters/dev-cluster/apps
     directory:
@@ -20,5 +22,4 @@ spec:
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
- 
-    
+      - PruneLast=true                        # <-- Ensures namespace deletion happens last
